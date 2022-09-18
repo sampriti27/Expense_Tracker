@@ -7,6 +7,7 @@ import { useSpeechContext } from '@speechly/react-client';
 
 import { incomeCategories, expenseCategories } from '../../../constants/categories';
 import formatDate from '../../../utils/formatDate';
+import CustomizedSnackbar from '../../SnackBar/SnackBar';
 
 const initialState = {
     amount: '',
@@ -21,14 +22,25 @@ const Form = () => {
     const [formData, setFormData] = useState(initialState);
     const { addTransaction } = useContext(ExpenseTrackerContext);
     const { segment } = useSpeechContext();
+    const [open, setOpen] = useState(false);
+    const [text, setText] = useState("");
+    const [type , setType] = useState("");    
 
     const createTransaction = () => {
+        if(Number.isNaN(Number(formData.amount)) || !formData.date.includes('-')) return;
+        
         if (!formData.amount || !formData.category || !formData.type || !formData.date) {
-            alert("Please fill all the fields!");
+            // alert("Please fill all the fields!");
+            setOpen(true);
+            setText("Please fill all the fields.");
+            setType("warning");
             return;
         }
 
         const transaction = { ...formData, amount: Number(formData.amount), id: uuidv4() }
+        setOpen(true);
+        setText("Transaction  successfully added.");
+        setType("success");
         addTransaction(transaction);
         setFormData(initialState);
     }
@@ -73,7 +85,9 @@ const Form = () => {
 
     const selectedCategories = formData.type === 'Income' ? incomeCategories : expenseCategories;
     return (
+        
         <Grid container spacing={2}>
+            <CustomizedSnackbar open ={open} setOpen={setOpen} text={text} type={type} />
             <Grid item xs={12}>
                 <Typography align='center' variant='subtitle2' gutterBottom>
                     {segment && segment.words.map((w) => w.value).join(" ")} 
