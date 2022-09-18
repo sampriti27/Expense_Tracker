@@ -44,11 +44,11 @@ export default function Tabs({ title }) {
                                 <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
                                     <TabList onChange={handleChange} aria-label="lab API tabs example">
                                         <Tab label="Total Expense" value="1" />
-                                        <Tab label="Daily Expense" value="2" />
+                                      
                                     </TabList>
                                 </Box>
                                 <TabPanel value="1"> <Doughnut data={chartData} />  </TabPanel>
-                                <TabPanel value="2">Blah Blah</TabPanel>
+                                
                             </TabContext>
                         </Box>
                     </>

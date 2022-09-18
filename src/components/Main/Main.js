@@ -8,20 +8,25 @@ import List from './List/List';
 import InfoCard from '../InfoCard';
 
 
+
 const Main = () => {
     const classes = useStyles();
     const { balance } = useContext(ExpenseTrackerContext);
     return (
         <Card className={classes.root}>
-            <CardHeader title="Expense Tracker" subheader="Powered by Speechly" />
+            <CardHeader title="Expense Tracker" subheader="Track your Budget" />
             <CardContent>
                 <Typography align='center' variant='h5'>Total Balance &#8377; {balance} </Typography>
+                <Typography variant='subtitle2' >
+                   
+                 </Typography>
                 <Typography variant='subtitle1' style={{ lineHeight: "1.5em", marginTop: "20px" }}>
                     <InfoCard />
                     
                 </Typography>
                 <Divider />
                <Form />
+               
             </CardContent>
             <CardContent className={classes.CardContent}>
                 <Grid container spacing={2}>

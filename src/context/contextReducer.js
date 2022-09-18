@@ -13,7 +13,10 @@ const contextReducer = (state,action) => {
             localStorage.setItem('transactions', JSON.stringify(transactions));
 
             return transactions;
-    
+        case 'SET_GOALS' :
+            const targetExpense = action.payload;
+            localStorage.setItem('targetExpense', JSON.stringify(targetExpense));
+            return targetExpense;
         default:
             return state;
     }
