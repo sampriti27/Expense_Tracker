@@ -28,7 +28,7 @@ Expense Tracker is an application that allows users to track their expenses and 
 To install and run this project locally, follow these steps:
 
 1. Clone this repository using `git clone https://github.com/sampriti27/Expense_Tracker.git`
-2. Navigate to the project directory with `cd File-hive-File-Manager`
+2. Navigate to the project directory with `cd Expense_Tracker`
 3. Install dependencies with `npm install`
 4. Start the development server with `npm start`
 
